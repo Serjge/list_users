@@ -29,6 +29,8 @@ module.exports = {
     alias: {
       src: path.resolve(__dirname, '..', 'src'),
       api: path.resolve(__dirname, '..', 'src/api'),
+      types: path.resolve(__dirname, '..', 'src/types'),
+      enums: path.resolve(__dirname, '..', 'src/enums'),
       assets: path.resolve(__dirname, '..', 'src/assets'),
       styles: path.resolve(__dirname, '..', 'src/styles'),
       components: path.resolve(__dirname, '..', 'src/components'),
