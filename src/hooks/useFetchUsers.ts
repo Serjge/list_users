@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { AxiosError } from 'axios';
 
-import { API } from 'api/api';
+import { API } from 'api';
 import { UserType } from 'types';
 
 type UseFetchUsersReturnType = {
@@ -46,6 +46,6 @@ export const useFetchUsers = (): UseFetchUsersReturnType => {
       isLoading,
       error,
     }),
-    [users],
+    [users, error, isLoading],
   );
 };
