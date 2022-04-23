@@ -1,0 +1,23 @@
+@import "src/styles";
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: $color-background-tertiary;
+}
+
+.container {
+  & > div:nth-last-child(1) {
+    margin-bottom: 0;
+  }
+}
+
+.link {
+  align-self: flex-end;
+  @include text(12px, 14px);
+  text-decoration: none;
+  color: $color-button-primary;
+}

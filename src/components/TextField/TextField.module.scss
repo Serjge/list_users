@@ -2,8 +2,7 @@
 
 .label {
   display: flex;
-  font-size: 8px;
-  line-height: 9px;
+  @include text(8px, 9px);
   margin-bottom: 3px;
 }
 
@@ -20,9 +19,7 @@
   background: none;
   padding: 5px 10px;
   outline: none;
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 12px;
+  @include text(10px, 12px);
 }
 
 .error {

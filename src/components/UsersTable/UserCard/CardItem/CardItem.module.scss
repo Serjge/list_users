@@ -1,0 +1,17 @@
+@import "src/styles";
+
+.wrapper {
+  display: flex;
+  margin-bottom: 7px;
+}
+
+.title {
+  @include text(11px, 13px);
+  color: $color-text-tertiary;
+  margin-right: 7px;
+}
+
+
+.text {
+  @include text(11px, 13px);
+}
