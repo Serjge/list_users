@@ -1,18 +1,18 @@
-import { FC, useCallback, useMemo, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 
 import style from './app.module.scss';
 
 import { SortMenu } from 'components';
 import { UsersContext } from 'context';
 import { useFetchUsers } from 'hooks';
+import { useSortUsers } from 'hooks/useSortUsers';
 import { ListUsersPage } from 'pages';
-import { SortType } from 'types';
-import { sortUsers } from 'utils';
 
 export const App: FC = () => {
   const { users } = useFetchUsers();
   const [userId, setUserId] = useState<Number | null>(null);
-  const [sortType, setSortType] = useState<SortType | undefined>(undefined);
+
+  const { sortedUsers, changeSort } = useSortUsers(users);
 
   const selectUserProfilePage = (id: number): void => {
     setUserId(id);
@@ -22,23 +22,14 @@ export const App: FC = () => {
     setUserId(null);
   };
 
-  const changeSort = useCallback(
-    (typeSort: SortType): void => {
-      setSortType(typeSort);
-    },
-    [sortType],
-  );
-
   const profile = (
     <div role="presentation" onClick={selectListUsersPage}>
       Profile
     </div>
   );
 
-  users.sort(sortUsers(sortType));
-
   const value = useMemo(
-    () => ({ users, selectUserProfilePage }),
+    () => ({ users: sortedUsers, selectUserProfilePage }),
     [users, selectUserProfilePage],
   );
 
