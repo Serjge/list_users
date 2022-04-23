@@ -33,7 +33,12 @@
     "no-magic-numbers": "off",
     "default-param-last": "off",
     "no-use-before-define": "off",
-    "no-param-reassign": ["error", { "props": false }],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
     "react/jsx-props-no-spreading": "off",
     "no-multiple-empty-lines": [
       "error",
@@ -64,6 +69,8 @@
       }
     ],
     "prettier/prettier": "error",
+    "react/require-default-props": "off",
+    "react/button-has-type": "off",
     "react/prop-types": 0,
     "react/display-name": "off",
     "react/react-in-jsx-scope": "off",
@@ -77,7 +84,6 @@
         ]
       }
     ],
-
     "react/function-component-definition": [
       2,
       {
