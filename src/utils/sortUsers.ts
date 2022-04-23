@@ -4,9 +4,9 @@ const ONE = 1;
 const MINUS_ONE = -1;
 const ZERO = 0;
 
-export const sortUsers = (
-  typeSort?: SortType,
-): ((a: UserType, b: UserType) => number) | undefined => {
+type sortUsersReturnType = ((a: UserType, b: UserType) => number) | undefined;
+
+export const sortUsers = (typeSort: SortType | undefined): sortUsersReturnType => {
   switch (typeSort) {
     case 'company': {
       return (a: UserType, b: UserType): number => {
