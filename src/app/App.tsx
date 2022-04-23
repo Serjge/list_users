@@ -5,11 +5,11 @@ import style from './app.module.scss';
 import { SortMenu } from 'components';
 import { UsersContext } from 'context';
 import { useFetchUsers, useSortUsers } from 'hooks';
-import { ListUsersPage } from 'pages';
+import { ListUsersPage, UserProfilePage } from 'pages';
 
 export const App: FC = () => {
   const { users } = useFetchUsers();
-  const [userId, setUserId] = useState<Number | null>(null);
+  const [userId, setUserId] = useState<number | null>(null);
 
   const { sortedUsers, changeSort } = useSortUsers(users);
 
@@ -21,12 +21,6 @@ export const App: FC = () => {
     setUserId(null);
   };
 
-  const profile = (
-    <div role="presentation" onClick={selectListUsersPage}>
-      Profile
-    </div>
-  );
-
   const value = useMemo(
     () => ({ users: sortedUsers, selectUserProfilePage }),
     [users, selectUserProfilePage],
@@ -36,7 +30,11 @@ export const App: FC = () => {
     <UsersContext.Provider value={value}>
       <div className={style.wrapper}>
         <SortMenu changeSort={changeSort} />
-        {userId ? profile : <ListUsersPage />}
+        {userId ? (
+          <UserProfilePage selectListUsersPage={selectListUsersPage} userId={userId} />
+        ) : (
+          <ListUsersPage />
+        )}
       </div>
     </UsersContext.Provider>
   );
