@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import styles from './UserCard.module.scss';
 
@@ -12,27 +12,23 @@ type UserCardPropsType = {
   selectUserProfilePage: (id: number) => void;
 };
 
-export const UserCard: FC<UserCardPropsType> = ({
-  company,
-  city,
-  name,
-  id,
-  selectUserProfilePage,
-}) => {
-  const onProfileUserClick = (): void => {
-    selectUserProfilePage(id);
-  };
+export const UserCard: FC<UserCardPropsType> = memo(
+  ({ company, city, name, id, selectUserProfilePage }) => {
+    const onProfileUserClick = (): void => {
+      selectUserProfilePage(id);
+    };
 
-  return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <CardItem title="ФИО" text={name} />
-        <CardItem title="город" text={city} />
-        <CardItem title="компания" text={company} />
+    return (
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <CardItem title="ФИО" text={name} />
+          <CardItem title="город" text={city} />
+          <CardItem title="компания" text={company} />
+        </div>
+        <div role="presentation" onClick={onProfileUserClick} className={styles.link}>
+          Подробнее
+        </div>
       </div>
-      <div role="presentation" onClick={onProfileUserClick} className={styles.link}>
-        Подробнее
-      </div>
-    </div>
-  );
-};
+    );
+  },
+);
