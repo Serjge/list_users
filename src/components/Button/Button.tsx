@@ -17,12 +17,12 @@ export const Button: FC<ButtonPropsType> = ({
   type,
   children,
 }) => {
-  const style =
+  const styleButton =
     typeButton === 'edit' ? `${styles.button} ${styles.button__edit}` : styles.button;
 
   return (
     <div>
-      <button disabled={isDisable} onClick={onClick} type={type} className={style}>
+      <button disabled={isDisable} onClick={onClick} type={type} className={styleButton}>
         {children}
       </button>
     </div>

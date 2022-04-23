@@ -1,0 +1,30 @@
+@import "src/styles";
+
+.label {
+display: flex;
+  font-size: 8px;
+  line-height: 9px;
+  margin-bottom: 3px;
+}
+
+.wrapper {
+  margin: 5px;
+  width: 211px;
+}
+
+.input {
+  width: 100%;
+  display: block;
+  border: solid 1px $color-border;
+  border-radius: 5px;
+  background: none;
+  padding: 5px 10px;
+  outline: none;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.error {
+  border: solid 1px $color-error;
+}
