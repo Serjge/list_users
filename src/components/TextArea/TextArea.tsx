@@ -23,7 +23,7 @@ export type TextFieldPropsType = DefaultInputPropsType &
   };
 
 export const TextArea: FC<TextFieldPropsType> = forwardRef(
-  ({ onChange, onChangeText, isError, labelTitle, isDisable }, ref) => {
+  ({ onChange, onChangeText, isError, labelTitle, isDisable, ...restProps }, ref) => {
     const onChangeCallback = (e: ChangeEvent<HTMLTextAreaElement>): void => {
       if (onChange) {
         onChange(e);
@@ -45,6 +45,7 @@ export const TextArea: FC<TextFieldPropsType> = forwardRef(
           disabled={isDisable}
           className={styleInput}
           ref={ref}
+          {...restProps}
         />
       </div>
     );

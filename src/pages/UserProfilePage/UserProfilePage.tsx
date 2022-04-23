@@ -1,6 +1,6 @@
 import { FC, useContext } from 'react';
 
-import { Button } from 'components';
+import { Button, UserProfileForm } from 'components';
 import { UsersContext } from 'context';
 
 type UserProfilePagePropsType = {
@@ -23,7 +23,7 @@ export const UserProfilePage: FC<UserProfilePagePropsType> = ({
       Профиль пользоваетля
       {user.username}
       <Button>Редактироввать</Button>
-      <Button onClick={selectListUsersPage}>назад</Button>
+      <UserProfileForm selectListUsersPage={selectListUsersPage} />
     </div>
   );
 };
