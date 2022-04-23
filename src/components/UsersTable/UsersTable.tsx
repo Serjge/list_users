@@ -1,15 +1,13 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 
 import styles from './UsersTable.module.scss';
 
 import { UserCard } from 'components';
-import { UserType } from 'types';
+import { UsersContext } from 'context';
 
-type UsersTablePropsType = {
-  users: UserType[];
-};
+export const UsersTable: FC = () => {
+  const { users, selectUserProfilePage } = useContext(UsersContext);
 
-export const UsersTable: FC<UsersTablePropsType> = ({ users }) => {
   const usersMap = users.map(({ company, username, address, id }) => (
     <UserCard
       name={username}
@@ -17,6 +15,7 @@ export const UsersTable: FC<UsersTablePropsType> = ({ users }) => {
       city={address.city}
       key={id}
       id={id}
+      selectUserProfilePage={selectUserProfilePage}
     />
   ));
 

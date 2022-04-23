@@ -1,0 +1,11 @@
+@import "src/styles";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 0 34px;
+}
+
+.title {
+  @include text(14px, 16px, 700);
+}

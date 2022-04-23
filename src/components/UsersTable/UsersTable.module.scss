@@ -1,0 +1,11 @@
+@import "src/styles";
+
+.wrapper {
+  width: 420px;
+
+}
+
+.text {
+  text-align: end;
+  @include text(12px, 14px);
+}

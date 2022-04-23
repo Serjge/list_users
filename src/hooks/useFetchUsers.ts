@@ -6,13 +6,13 @@ import { API } from 'api';
 import { UserType } from 'types';
 
 type UseFetchUsersReturnType = {
-  users: UserType[] | undefined;
+  users: UserType[];
   error: string | null;
   isLoading: boolean;
 };
 
 export const useFetchUsers = (): UseFetchUsersReturnType => {
-  const [users, setUsers] = useState<UserType[]>();
+  const [users, setUsers] = useState<UserType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
