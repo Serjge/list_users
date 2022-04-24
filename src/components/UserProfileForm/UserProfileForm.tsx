@@ -50,8 +50,8 @@ export const UserProfileForm: FC<UserProfileFormPropsType> = ({
   );
 
   const onSubmit: SubmitHandler<FormInputType> = (data): void => {
-    // const json = JSON.stringify(data);
-    console.log(data);
+    const json = JSON.stringify(data);
+    console.log(json);
     setIsDisable(true);
   };
 

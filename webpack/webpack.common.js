@@ -124,6 +124,10 @@ module.exports = {
           from: path.resolve(__dirname, '..', 'src/assets/images'),
           to: path.resolve(__dirname, '..', 'build'),
         },
+        {
+          from: path.resolve(__dirname, '..', 'public/favicon.ico'),
+          to: path.resolve(__dirname, '..', 'build/favicon.ico'),
+        },
       ],
     }),
     new CleanWebpackPlugin(),

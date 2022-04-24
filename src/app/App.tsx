@@ -9,10 +9,9 @@ import { ListUsersPage, UserProfilePage } from 'pages';
 
 export const App: FC = () => {
   const { users, isLoading, error } = useFetchUsers();
+  const { sortedUsers, changeSort } = useSortUsers(users);
 
   const [userId, setUserId] = useState<number | null>(null);
-
-  const { sortedUsers, changeSort } = useSortUsers(users);
 
   const value = useMemo(() => ({ users: sortedUsers, setUserId }), [users]);
 
