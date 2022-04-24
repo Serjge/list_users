@@ -1,22 +1,17 @@
-import { FC, useContext, useState } from 'react';
+import { FC, useState } from 'react';
 
 import styles from './UserProfilePage.module.scss';
 
 import { Button, UserProfileForm } from 'components';
-import { UsersContext } from 'context';
+import { useUserContext } from 'hooks';
+import { findUser } from 'utils';
 
 type UserProfilePagePropsType = {
   userId: number;
-  selectListUsersPage: () => void;
 };
 
-const ZERO_ELEMENT_ARRAY = 0;
-
-export const UserProfilePage: FC<UserProfilePagePropsType> = ({
-  userId,
-  selectListUsersPage,
-}) => {
-  const { users } = useContext(UsersContext);
+export const UserProfilePage: FC<UserProfilePagePropsType> = ({ userId }) => {
+  const { users, setUserId } = useUserContext();
 
   const [isDisable, setIsDisable] = useState(true);
 
@@ -27,7 +22,7 @@ export const UserProfilePage: FC<UserProfilePagePropsType> = ({
     username,
     name,
     website,
-  } = users.filter(({ id }) => id === userId)[ZERO_ELEMENT_ARRAY];
+  } = findUser(users, userId);
 
   const onEditProfileClick = (): void => {
     setIsDisable(false);
@@ -51,7 +46,7 @@ export const UserProfilePage: FC<UserProfilePagePropsType> = ({
         zipCode={zipcode}
         comment=""
         isDisable={isDisable}
-        selectListUsersPage={selectListUsersPage}
+        setUserId={setUserId}
       />
     </div>
   );

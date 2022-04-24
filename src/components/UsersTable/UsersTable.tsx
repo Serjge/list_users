@@ -1,12 +1,12 @@
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 
 import styles from './UsersTable.module.scss';
 
 import { UserCard } from 'components';
-import { UsersContext } from 'context';
+import { useUserContext } from 'hooks';
 
 export const UsersTable: FC = () => {
-  const { users, selectUserProfilePage } = useContext(UsersContext);
+  const { users, setUserId } = useUserContext();
 
   const usersMap = users.map(({ company, username, address, id }) => (
     <UserCard
@@ -15,7 +15,7 @@ export const UsersTable: FC = () => {
       city={address.city}
       key={id}
       id={id}
-      selectUserProfilePage={selectUserProfilePage}
+      setUserId={setUserId}
     />
   ));
 

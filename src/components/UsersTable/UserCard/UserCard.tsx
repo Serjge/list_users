@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { Dispatch, FC, memo, SetStateAction } from 'react';
 
 import styles from './UserCard.module.scss';
 
@@ -9,13 +9,13 @@ type UserCardPropsType = {
   city: string;
   company: string;
   id: number;
-  selectUserProfilePage: (id: number) => void;
+  setUserId: Dispatch<SetStateAction<number | null>>;
 };
 
 export const UserCard: FC<UserCardPropsType> = memo(
-  ({ company, city, name, id, selectUserProfilePage }) => {
+  ({ company, city, name, id, setUserId }) => {
     const onProfileUserClick = (): void => {
-      selectUserProfilePage(id);
+      setUserId(id);
     };
 
     return (

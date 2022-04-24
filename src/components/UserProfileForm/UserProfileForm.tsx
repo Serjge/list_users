@@ -8,7 +8,7 @@ import { Button, TextArea, TextField } from 'components';
 import { FormInputType, useGetFormData } from 'hooks';
 
 type UserProfileFormPropsType = {
-  selectListUsersPage: () => void;
+  setUserId: Dispatch<SetStateAction<number | null>>;
   setIsDisable: Dispatch<SetStateAction<boolean>>;
   name: string;
   userName: string;
@@ -23,7 +23,7 @@ type UserProfileFormPropsType = {
 };
 
 export const UserProfileForm: FC<UserProfileFormPropsType> = ({
-  selectListUsersPage,
+  setUserId,
   setIsDisable,
   email,
   comment,
@@ -55,6 +55,10 @@ export const UserProfileForm: FC<UserProfileFormPropsType> = ({
     setIsDisable(true);
   };
 
+  const onBackClick = (): void => {
+    setUserId(null);
+  };
+
   const form = dataForm.map(({ type, formRegister, label, error }) => {
     if (type === 'textField') {
       return (
@@ -80,7 +84,7 @@ export const UserProfileForm: FC<UserProfileFormPropsType> = ({
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.wrapper__form}>{form}</div>
       <div className={styles.wrapper__submit}>
-        <Button onClick={selectListUsersPage} type="button">
+        <Button onClick={onBackClick} type="button">
           Назад
         </Button>
         <Button isDisable={isDisable} typeButton="edit" type="submit">
