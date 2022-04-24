@@ -78,7 +78,7 @@ export const UserProfileForm: FC<UserProfileFormPropsType> = ({
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      {form}
+      <div className={styles.wrapper__form}>{form}</div>
       <div className={styles.wrapper__submit}>
         <Button onClick={selectListUsersPage} type="button">
           Назад

@@ -1,5 +1,7 @@
 import { FC, useContext, useState } from 'react';
 
+import styles from './UserProfilePage.module.scss';
+
 import { Button, UserProfileForm } from 'components';
 import { UsersContext } from 'context';
 
@@ -27,10 +29,16 @@ export const UserProfilePage: FC<UserProfilePagePropsType> = ({
     website,
   } = users.filter(({ id }) => id === userId)[ZERO_ELEMENT_ARRAY];
 
+  const onEditProfileClick = (): void => {
+    setIsDisable(false);
+  };
+
   return (
-    <div>
-      Профиль пользоваетля
-      <Button onClick={() => setIsDisable(false)}>Редактироввать</Button>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <div className={styles.title}>Профиль пользоваетля</div>
+        <Button onClick={onEditProfileClick}>Редактироввать</Button>
+      </div>
       <UserProfileForm
         setIsDisable={setIsDisable}
         city={city}
