@@ -1,5 +1,4 @@
 import {
-  ChangeEvent,
   DetailedHTMLProps,
   FC,
   forwardRef,
@@ -16,23 +15,13 @@ type DefaultInputPropsType = DetailedHTMLProps<
 
 export type TextFieldPropsType = DefaultInputPropsType &
   RefAttributes<HTMLInputElement> & {
-    onChangeText?: (value: string) => void;
     isError?: boolean;
     labelTitle?: string;
     isDisable?: boolean;
   };
 
 export const TextField: FC<TextFieldPropsType> = forwardRef(
-  ({ onChange, onChangeText, isError, labelTitle, isDisable, ...restProps }, ref) => {
-    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>): void => {
-      if (onChange) {
-        onChange(e);
-      }
-      if (onChangeText) {
-        onChangeText(e.currentTarget.value);
-      }
-    };
-
+  ({ isError, labelTitle, isDisable, ...restProps }, ref) => {
     const styleInput = isError ? `${styles.input} ${styles.error}` : styles.input;
 
     return (
@@ -42,7 +31,6 @@ export const TextField: FC<TextFieldPropsType> = forwardRef(
         </label>
         <input
           type="text"
-          onChange={onChangeCallback}
           disabled={isDisable}
           className={styleInput}
           ref={ref}

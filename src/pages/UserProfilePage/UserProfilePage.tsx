@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useState } from 'react';
 
 import { Button, UserProfileForm } from 'components';
 import { UsersContext } from 'context';
@@ -16,14 +16,35 @@ export const UserProfilePage: FC<UserProfilePagePropsType> = ({
 }) => {
   const { users } = useContext(UsersContext);
 
-  const user = users.filter(({ id }) => id === userId)[ZERO_ELEMENT_ARRAY];
+  const [isDisable, setIsDisable] = useState(true);
+
+  const {
+    phone,
+    address: { city, street, zipcode },
+    email,
+    username,
+    name,
+    website,
+  } = users.filter(({ id }) => id === userId)[ZERO_ELEMENT_ARRAY];
 
   return (
     <div>
       Профиль пользоваетля
-      {user.username}
-      <Button>Редактироввать</Button>
-      <UserProfileForm selectListUsersPage={selectListUsersPage} />
+      <Button onClick={() => setIsDisable(false)}>Редактироввать</Button>
+      <UserProfileForm
+        setIsDisable={setIsDisable}
+        city={city}
+        name={name}
+        userName={username}
+        email={email}
+        phone={phone}
+        street={street}
+        webSite={website}
+        zipCode={zipcode}
+        comment=""
+        isDisable={isDisable}
+        selectListUsersPage={selectListUsersPage}
+      />
     </div>
   );
 };
