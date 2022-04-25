@@ -34,7 +34,6 @@ module.exports = {
       hooks: path.resolve(__dirname, '..', 'src/hooks'),
       utils: path.resolve(__dirname, '..', 'src/utils'),
       pages: path.resolve(__dirname, '..', 'src/pages'),
-      assets: path.resolve(__dirname, '..', 'src/assets'),
       styles: path.resolve(__dirname, '..', 'src/styles'),
       context: path.resolve(__dirname, '..', 'src/context'),
       components: path.resolve(__dirname, '..', 'src/components'),
@@ -120,10 +119,6 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        {
-          from: path.resolve(__dirname, '..', 'src/assets/images'),
-          to: path.resolve(__dirname, '..', 'build'),
-        },
         {
           from: path.resolve(__dirname, '..', 'public/favicon.ico'),
           to: path.resolve(__dirname, '..', 'build/favicon.ico'),
