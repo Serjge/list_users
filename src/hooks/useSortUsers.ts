@@ -9,7 +9,7 @@ type UseSortUsersReturnType = {
 };
 
 export const useSortUsers = (users: UserType[]): UseSortUsersReturnType => {
-  const [sortType, setSortType] = useState<SortType | undefined>(undefined);
+  const [sortType, setSortType] = useState<SortType>('noSort');
 
   const changeSort = useCallback(
     (typeSort: SortType): void => {
@@ -18,7 +18,7 @@ export const useSortUsers = (users: UserType[]): UseSortUsersReturnType => {
     [sortType],
   );
 
-  const sortedUsers = users.sort(sortUsers(sortType));
+  const sortedUsers = sortUsers(users, sortType);
 
   return useMemo(
     () => ({

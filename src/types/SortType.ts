@@ -1,1 +1,1 @@
-export type SortType = 'city' | 'company';
+export type SortType = 'city' | 'company' | 'noSort';
