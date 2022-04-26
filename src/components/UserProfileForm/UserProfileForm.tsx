@@ -5,6 +5,7 @@ import { SubmitHandler } from 'react-hook-form';
 import styles from './UserProfileForm.module.scss';
 
 import { Button, TextArea, TextField } from 'components';
+import { TypeField } from 'enums';
 import { FormInputType, useGetFormData } from 'hooks';
 
 type UserProfileFormPropsType = {
@@ -36,7 +37,7 @@ export const UserProfileForm: FC<UserProfileFormPropsType> = ({
   city,
   isDisable,
 }) => {
-  const { handleSubmit, dataForm } = useGetFormData(
+  const { handleSubmit, dataForm } = useGetFormData({
     name,
     userName,
     email,
@@ -47,7 +48,7 @@ export const UserProfileForm: FC<UserProfileFormPropsType> = ({
     webSite,
     comment,
     isDisable,
-  );
+  });
 
   const onSubmit: SubmitHandler<FormInputType> = (data): void => {
     const json = JSON.stringify(data);
@@ -60,7 +61,7 @@ export const UserProfileForm: FC<UserProfileFormPropsType> = ({
   };
 
   const form = dataForm.map(({ type, formRegister, label, error }) => {
-    if (type === 'textField') {
+    if (type === TypeField.textField) {
       return (
         <TextField
           key={label}

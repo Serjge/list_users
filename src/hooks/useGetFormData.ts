@@ -6,6 +6,8 @@ import {
   UseFormRegisterReturn,
 } from 'react-hook-form';
 
+import { TypeField } from 'enums';
+
 export type FormInputType = {
   nameForm: string;
   userNameForm: string;
@@ -19,7 +21,7 @@ export type FormInputType = {
 };
 
 type DataFormType = {
-  type: 'textField' | 'textArea';
+  type: TypeField.textField | TypeField.textArea;
   label: string;
   error: string | undefined;
   formRegister: UseFormRegisterReturn;
@@ -36,18 +38,31 @@ const PATTERN_WEBSITE =
 const PATTERN_EMAIL =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-export const useGetFormData = (
-  name: string,
-  userName: string,
-  email: string,
-  city: string,
-  street: string,
-  zipCode: string,
-  phone: string,
-  webSite: string,
-  comment: string,
-  isDisable: boolean,
-): UseGetFormDataReturnType => {
+type UseGetFormDataType = {
+  name: string;
+  userName: string;
+  email: string;
+  city: string;
+  street: string;
+  zipCode: string;
+  phone: string;
+  webSite: string;
+  comment: string;
+  isDisable: boolean;
+};
+
+export const useGetFormData = ({
+  comment,
+  city,
+  userName,
+  name,
+  isDisable,
+  phone,
+  street,
+  zipCode,
+  webSite,
+  email,
+}: UseGetFormDataType): UseGetFormDataReturnType => {
   const defaultValues: UnpackNestedValue<DeepPartial<FormInputType>> = {
     cityForm: city,
     commentForm: comment,
@@ -86,7 +101,7 @@ export const useGetFormData = (
         maxLength: 80,
         disabled: isDisable,
       }),
-      type: 'textField',
+      type: TypeField.textField,
       label: 'Name',
     },
     {
@@ -96,7 +111,7 @@ export const useGetFormData = (
         maxLength: 100,
         disabled: isDisable,
       }),
-      type: 'textField',
+      type: TypeField.textField,
       label: 'User name',
     },
     {
@@ -106,7 +121,7 @@ export const useGetFormData = (
         pattern: PATTERN_EMAIL,
         disabled: isDisable,
       }),
-      type: 'textField',
+      type: TypeField.textField,
       label: 'Email',
     },
     {
@@ -115,7 +130,7 @@ export const useGetFormData = (
         required: true,
         disabled: isDisable,
       }),
-      type: 'textField',
+      type: TypeField.textField,
       label: 'Street',
     },
     {
@@ -124,7 +139,7 @@ export const useGetFormData = (
         required: true,
         disabled: isDisable,
       }),
-      type: 'textField',
+      type: TypeField.textField,
       label: 'City',
     },
     {
@@ -133,7 +148,7 @@ export const useGetFormData = (
         required: true,
         disabled: isDisable,
       }),
-      type: 'textField',
+      type: TypeField.textField,
       label: 'Zip Code',
     },
     {
@@ -143,7 +158,7 @@ export const useGetFormData = (
         valueAsNumber: true,
         disabled: isDisable,
       }),
-      type: 'textField',
+      type: TypeField.textField,
       label: 'Phone',
     },
     {
@@ -154,7 +169,7 @@ export const useGetFormData = (
         pattern: PATTERN_WEBSITE,
         disabled: isDisable,
       }),
-      type: 'textField',
+      type: TypeField.textField,
       label: 'WebSite',
     },
     {
@@ -164,7 +179,7 @@ export const useGetFormData = (
         maxLength: 300,
         disabled: isDisable,
       }),
-      type: 'textArea',
+      type: TypeField.textArea,
       label: 'Comment',
     },
   ];
